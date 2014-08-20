@@ -79,7 +79,7 @@
     if ([@"imageSegue" isEqualToString:segue.identifier]) {
         ImageViewController *ivc = (ImageViewController *)segue.destinationViewController;
         ivc.imageURL = [self.flickrContext photoSourceURLFromDictionary:image size:OFFlickrLargeSize];
-        ivc.description = [NSString stringWithFormat:@"%@", image[@"ownername"]];
+        ivc.imageDescription = [NSString stringWithFormat:@"%@", image[@"ownername"]];
     }
 }
 
@@ -116,7 +116,7 @@
             if (window.screen != [UIScreen mainScreen]) {
                 ImageViewController *ivc = (ImageViewController *)window.rootViewController;
                 ivc.imageURL = [self.flickrContext photoSourceURLFromDictionary:image size:OFFlickrLargeSize];
-                ivc.description = [NSString stringWithFormat:@"%@", image[@"ownername"]];
+                ivc.imageDescription = [NSString stringWithFormat:@"%@", image[@"ownername"]];
             }
         }
     }

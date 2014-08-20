@@ -51,12 +51,12 @@
     }
 }
 
-- (void)setDescription:(NSString *)description
+- (void)setImageDescription:(NSString *)imageDescription
 {
-    if (![description isEqualToString:_description]) {
-        _description = description;
+    if (![imageDescription isEqualToString:_imageDescription]) {
+        _imageDescription = imageDescription;
         
-        self.descriptionLabel.text = _description;
+        self.descriptionLabel.text = _imageDescription;
     }
 }
 
