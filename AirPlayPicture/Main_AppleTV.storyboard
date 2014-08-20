@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A329f" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="KbJ-p4-jqR">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--Image View Controller-->
+        <scene sceneID="mVu-Mm-SWg">
+            <objects>
+                <viewController id="KbJ-p4-jqR" customClass="ImageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YqL-db-iDn"/>
+                        <viewControllerLayoutGuide type="bottom" id="KBZ-Wb-7Jv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TLI-ys-HiA">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView appearanceType="aqua" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2zm-JG-H07">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <activityIndicatorView appearanceType="aqua" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="WZT-hX-aqx">
+                                <rect key="frame" x="494" y="365" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                            <progressView appearanceType="aqua" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xgx-Te-uBB">
+                                <rect key="frame" x="85" y="445" width="853" height="3"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="progressTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="trackTintColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </progressView>
+                            <view appearanceType="aqua" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Zm-dR-QlU">
+                                <rect key="frame" x="0.0" y="656" width="1024" height="112"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glu-Wr-zrn">
+                                        <rect key="frame" x="20" y="76" width="984" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="author" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nDN-nu-jrt">
+                                        <rect key="frame" x="20" y="56" width="42" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="112" id="H9E-Mz-bgf"/>
+                                    <constraint firstItem="glu-Wr-zrn" firstAttribute="leading" secondItem="3Zm-dR-QlU" secondAttribute="leading" constant="20" id="S1K-U1-gVm"/>
+                                    <constraint firstItem="glu-Wr-zrn" firstAttribute="leading" secondItem="nDN-nu-jrt" secondAttribute="leading" id="UGE-Rw-0vI"/>
+                                    <constraint firstItem="glu-Wr-zrn" firstAttribute="top" secondItem="nDN-nu-jrt" secondAttribute="bottom" constant="3" id="jq5-Dr-pwS"/>
+                                    <constraint firstAttribute="trailing" secondItem="glu-Wr-zrn" secondAttribute="trailing" constant="20" id="jxT-hE-Yvo"/>
+                                    <constraint firstAttribute="bottom" secondItem="glu-Wr-zrn" secondAttribute="bottom" constant="10" id="qhR-dX-z2a"/>
+                                </constraints>
+                            </view>
+                            <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a photo on your device to see it on this Apple TV" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Js3-Fg-CAk">
+                                <rect key="frame" x="24" y="271" width="975" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="xgx-Te-uBB" firstAttribute="top" secondItem="WZT-hX-aqx" secondAttribute="bottom" constant="43" id="0Rz-sP-BkD"/>
+                            <constraint firstItem="xgx-Te-uBB" firstAttribute="leading" secondItem="TLI-ys-HiA" secondAttribute="leading" constant="85" id="0uc-i4-RVA"/>
+                            <constraint firstItem="KBZ-Wb-7Jv" firstAttribute="top" secondItem="2zm-JG-H07" secondAttribute="bottom" id="1bO-or-Xs7"/>
+                            <constraint firstAttribute="centerY" secondItem="Js3-Fg-CAk" secondAttribute="centerY" constant="89" id="535-fz-92F"/>
+                            <constraint firstItem="2zm-JG-H07" firstAttribute="leading" secondItem="TLI-ys-HiA" secondAttribute="leading" id="9Su-TM-WXj"/>
+                            <constraint firstItem="2zm-JG-H07" firstAttribute="top" secondItem="TLI-ys-HiA" secondAttribute="top" id="MmY-eB-sFM"/>
+                            <constraint firstAttribute="trailing" secondItem="3Zm-dR-QlU" secondAttribute="trailing" id="WQr-20-9v1"/>
+                            <constraint firstItem="Js3-Fg-CAk" firstAttribute="leading" secondItem="TLI-ys-HiA" secondAttribute="leading" constant="24" id="Yw4-H7-eg2"/>
+                            <constraint firstAttribute="trailing" secondItem="2zm-JG-H07" secondAttribute="trailing" id="Zy9-xu-Ufg"/>
+                            <constraint firstAttribute="centerY" secondItem="WZT-hX-aqx" secondAttribute="centerY" constant="0.5" id="bNm-q5-5V9"/>
+                            <constraint firstItem="3Zm-dR-QlU" firstAttribute="leading" secondItem="TLI-ys-HiA" secondAttribute="leading" id="jba-Pp-tCJ"/>
+                            <constraint firstAttribute="centerX" secondItem="Js3-Fg-CAk" secondAttribute="centerX" constant="0.5" id="oku-Lh-lsC"/>
+                            <constraint firstAttribute="centerX" secondItem="WZT-hX-aqx" secondAttribute="centerX" constant="-0.5" id="onf-mz-U7k"/>
+                            <constraint firstAttribute="centerX" secondItem="xgx-Te-uBB" secondAttribute="centerX" id="qvP-m4-9Id"/>
+                            <constraint firstItem="KBZ-Wb-7Jv" firstAttribute="top" secondItem="3Zm-dR-QlU" secondAttribute="bottom" id="xI5-GW-fzK"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cHb-uK-oaQ"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="appleTVAlertLabel" destination="Js3-Fg-CAk" id="vPC-aa-6eu"/>
+                        <outlet property="descriptionBottomConstraint" destination="xI5-GW-fzK" id="qx3-ZU-hdC"/>
+                        <outlet property="descriptionLabel" destination="glu-Wr-zrn" id="r7M-Bd-f5J"/>
+                        <outlet property="fadeView" destination="3Zm-dR-QlU" id="li3-i1-QRi"/>
+                        <outlet property="imageView" destination="2zm-JG-H07" id="QNT-ua-K5d"/>
+                        <outlet property="progress" destination="xgx-Te-uBB" id="tOh-hB-44i"/>
+                        <outlet property="spinner" destination="WZT-hX-aqx" id="Lvo-zv-rdy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oUy-GE-D0t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1209" y="763"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>

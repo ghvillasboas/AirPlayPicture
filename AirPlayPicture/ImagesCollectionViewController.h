@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ImagesCollectionViewController.h
 //  AirPlayPicture
 //
 //  Created by George Villasboas on 8/19/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ImagesCollectionViewController : UICollectionViewController
 
 @end
