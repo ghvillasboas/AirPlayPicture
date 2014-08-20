@@ -10,5 +10,4 @@
 
 @interface ImageCollectionViewCell : UICollectionViewCell
 @property (strong, nonatomic) NSURL *imageURL;
-@property (assign, nonatomic) BOOL *airPlay;
 @end

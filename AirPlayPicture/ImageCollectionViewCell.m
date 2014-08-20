@@ -10,13 +10,20 @@
 
 @interface ImageCollectionViewCell () <NSURLSessionDownloadDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (strong, nonatomic) NSURLSession *urlSession;
-@property (strong, nonatomic) NSURLSessionDownloadTask *imageDownloadTask;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (weak, nonatomic) IBOutlet UIImageView *airPlayIconImageView;
+
+@property (strong, nonatomic) NSURLSession *urlSession;
+@property (strong, nonatomic) NSURLSessionDownloadTask *imageDownloadTask;
 @end
 
 @implementation ImageCollectionViewCell
+
+#pragma mark -
+#pragma mark Getters overriders
+
+#pragma mark -
+#pragma mark Setters overriders
 
 - (void)setImageURL:(NSURL *)imageURL
 {
@@ -27,24 +34,18 @@
     }
 }
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        if (self) {
+#pragma mark -
+#pragma mark Designated initializers
 
-        }
-    }
-    return self;
-}
+#pragma mark -
+#pragma mark Public methods
 
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-    
-    self.urlSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:[NSOperationQueue mainQueue]];
-}
+#pragma mark -
+#pragma mark Private methods
 
+/**
+ *  Display or not the airplay icon
+ */
 - (void)setupAirPlayIcon
 {
     if ([UIScreen screens].count > 1) {
@@ -54,6 +55,19 @@
         self.airPlayIconImageView.hidden = YES;
     }
 }
+
+#pragma mark -
+#pragma mark View life cycle
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    self.urlSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+}
+
+#pragma mark -
+#pragma mark Overriden methods
 
 - (void)setSelected:(BOOL)selected
 {
@@ -70,6 +84,17 @@
         self.layer.borderWidth = 0.0;
     }
 }
+
+#pragma mark -
+#pragma mark Storyboards Segues
+
+#pragma mark -
+#pragma mark Target/Actions
+
+#pragma mark -
+#pragma mark Delegates
+
+#pragma mark - NSURLSession Delegates
 
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
 {
@@ -92,6 +117,7 @@
  totalBytesWritten:(int64_t)totalBytesWritten
 totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
 {
+    
 }
 
 /* Sent when a download has been resumed. If a download failed with an
@@ -105,5 +131,9 @@ expectedTotalBytes:(int64_t)expectedTotalBytes
 {
     
 }
+
+#pragma mark -
+#pragma mark Notification center
+
 
 @end

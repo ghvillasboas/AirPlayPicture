@@ -11,9 +11,6 @@
 #import "ObjectiveFlickr.h"
 #import "ImageViewController.h"
 
-#define FLICKR_API_KEY @"bac09d64b390438a148af5b15a7855a9"
-#define FLICKR_API_SECRET @"10262342f156a14f"
-
 @interface ImagesCollectionViewController () <OFFlickrAPIRequestDelegate>
 @property (strong, nonatomic) NSArray *images;
 @property (strong, nonatomic) OFFlickrAPIContext *flickrContext;
@@ -21,6 +18,9 @@
 @end
 
 @implementation ImagesCollectionViewController
+
+#pragma mark -
+#pragma mark Getters overriders
 
 - (OFFlickrAPIContext *)flickrContext
 {
@@ -31,14 +31,31 @@
     return _flickrContext;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+#pragma mark -
+#pragma mark Setters overriders
+
+#pragma mark -
+#pragma mark Designated initializers
+
+#pragma mark -
+#pragma mark Public methods
+
+#pragma mark -
+#pragma mark Private methods
+
+/**
+ *  Requests the flickr api to fetch some images
+ */
+- (void)loadImages
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    self.flickrRequest = [[OFFlickrAPIRequest alloc] initWithAPIContext:self.flickrContext];
+    self.flickrRequest.delegate = self;
+    
+    [self.flickrRequest callAPIMethodWithGET:@"flickr.photos.getRecent" arguments:@{@"per_page" : @"20", @"extras":@"owner_name,date_taken,description"}];
 }
+
+#pragma mark -
+#pragma mark ViewController life cycle
 
 - (void)viewDidLoad
 {
@@ -48,13 +65,11 @@
     [self loadImages];
 }
 
-- (void)loadImages
-{
-    self.flickrRequest = [[OFFlickrAPIRequest alloc] initWithAPIContext:self.flickrContext];
-    self.flickrRequest.delegate = self;
-    
-    [self.flickrRequest callAPIMethodWithGET:@"flickr.photos.getRecent" arguments:@{@"per_page" : @"20", @"extras":@"owner_name,date_taken,description"}];
-}
+#pragma mark -
+#pragma mark Overriden methods
+
+#pragma mark -
+#pragma mark Storyboards Segues
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -68,6 +83,12 @@
     }
 }
 
+#pragma mark -
+#pragma mark Target/Actions
+
+#pragma mark -
+#pragma mark Delegates
+
 #pragma mark - Collection View Data Sources
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -78,19 +99,12 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
-
+    
     NSDictionary *photo = [self.images objectAtIndex:indexPath.row];
     cell.imageURL = [self.flickrContext photoSourceURLFromDictionary:photo size:OFFlickrSmallSquareSize];
     
     return cell;
 }
-
-//- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    UICollectionViewCell *selectedCell = [self.collectionView cellForItemAtIndexPath:indexPath];
-//    selectedCell.layer.borderColor = [UIColor clearColor].CGColor;
-//    selectedCell.layer.borderWidth = 0.0;
-//}
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -98,13 +112,6 @@
     NSArray *screens = [UIScreen screens];
     
     if (screens.count > 1) {
-        
-
-        
-//        UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
-//        cell.layer.borderWidth = 5.0;
-//        cell.layer.borderColor = [UIColor redColor].CGColor;
-        
         for (UIWindow *window in [[UIApplication sharedApplication] windows]) {
             if (window.screen != [UIScreen mainScreen]) {
                 ImageViewController *ivc = (ImageViewController *)window.rootViewController;
@@ -136,5 +143,8 @@
 {
     NSLog(@"%@", inError);
 }
+
+#pragma mark -
+#pragma mark Notification center
 
 @end
