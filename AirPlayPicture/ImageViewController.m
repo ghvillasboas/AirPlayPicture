@@ -44,7 +44,10 @@
         _imageURL = imageURL;
         
         [self setupUIForImageDownloading];
-        [self hideDescriptionViewAnimated:self.isAppleTV];
+        
+        if (!self.isAppleTV) {
+            [self hideDescriptionViewAnimated:NO];
+        }
         
         self.imageDownloadTask = [self.urlSession downloadTaskWithURL:_imageURL];
         [self.imageDownloadTask resume];
@@ -56,7 +59,16 @@
     if (![imageDescription isEqualToString:_imageDescription]) {
         _imageDescription = imageDescription;
         
-        self.descriptionLabel.text = _imageDescription;
+        if (self.view.window) {
+            [self hideDescriptionViewAnimated:self.isAppleTV completionHandler:^{
+                self.descriptionLabel.text = _imageDescription;
+                [self showDescriptionViewAnimated:self.isAppleTV];
+            }];
+        }
+        else{
+            self.descriptionLabel.text = _imageDescription;
+        }
+        
     }
 }
 
@@ -126,32 +138,67 @@
  */
 - (void)showDescriptionViewAnimated:(BOOL)animated
 {
+    [self showDescriptionViewAnimated:animated completionHandler:nil];
+}
+
+/**
+ *  Show the description view
+ *
+ *  @param animated Animation flag
+ *  @param completion completion block
+ */
+- (void)showDescriptionViewAnimated:(BOOL)animated completionHandler:(void (^)(void))completion
+{
     self.descriptionBottomConstraint.constant = 0.0;
     if (animated) {
         [UIView animateWithDuration:1.0 animations:^{
             [self.view layoutIfNeeded];
-        }];
+        }
+         completion:^(BOOL finished) {
+             if (finished) {
+                 if (completion) {
+                     completion();
+                 }
+             }
+         }];
     }
     else{
         [self.view layoutIfNeeded];
+        if (completion) {
+            completion();
+        }
     }
+}
+
+- (void)hideDescriptionViewAnimated:(BOOL)animated
+{
+    [self hideDescriptionViewAnimated:animated completionHandler:nil];
 }
 
 /**
  *  Hide the description view
  *
  *  @param animated Animation flag
+ *  @param completion completion block
  */
-- (void)hideDescriptionViewAnimated:(BOOL)animated
+- (void)hideDescriptionViewAnimated:(BOOL)animated completionHandler:(void (^)(void))completion
 {
     self.descriptionBottomConstraint.constant = -CGRectGetHeight(self.fadeView.frame);
     if (animated) {
         [UIView animateWithDuration:1.0 animations:^{
             [self.view layoutIfNeeded];
-        }];
+        }
+                         completion:^(BOOL finished) {
+                             if (completion) {
+                                 completion();
+                             }
+                         }];
     }
     else{
         [self.view layoutIfNeeded];
+        if (completion) {
+            completion();
+        }
     }
 }
 
